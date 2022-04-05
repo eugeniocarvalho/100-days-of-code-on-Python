@@ -24,13 +24,14 @@ while flag:
     print(encrypt_message)
   elif answer == 'decode':
     message = input("Type your message:\n")
-    shift_number = int(input("Type the shift number:\n"))
+    number = int(input("Type the shift number:\n"))
 
     for i in range(len(message)):
       
       shift_number = (alphabet.index(message[i]) - number)
       
       decrypt_message += alphabet[shift_number]
-      print(decrypt_message)
+    
+    print(decrypt_message)
   else:
     break
