@@ -1,37 +1,39 @@
 import string
 
-flag = True
+def ceaser(message, number, answer):
+  text = ""
+
+  for letter in message:
+    if letter == ' ':
+      text += ' '
+    else:
+      if alphabet.index(letter) + number > alphabet_length:
+        shift_number = (alphabet.index(letter) + number) % alphabet_length - 1
+      else:
+        shift_number = (alphabet.index(letter) + number) % alphabet_length
+      
+      if answer == 'decode':
+        if alphabet.index(letter) - number < 0:
+          shift_number = alphabet.index(letter) - number -1
+
+        shift_number = alphabet.index(letter) - number
+
+      text += alphabet[shift_number]
+  
+  print(f"The {answer} text is: {text}")
+
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 alphabet_length = len(alphabet) - 1
 
-while flag:
-  encrypt_message = ""
-  decrypt_message = ""
+while True:
   answer = input("Type 'encode' to encrypt, or 'decode' to decrypt:\n")
 
-  if answer == 'encode':
-    message = input("Type your message:\n")
-    number = int(input("Type the shift number:\n"))
+  message = input("Type your message:\n")
+  number = int(input("Type the shift number:\n"))
 
-    for i in range(len(message)):
-      shift_number = (alphabet.index(message[i]) + number)
+  ceaser(message, number, answer)
 
-      if shift_number > alphabet_length:
-        shift_number = (alphabet.index(message[i]) + number) - alphabet_length - 1
+  isBreak = input("Type 'yes' to continue. 'no'\n")
 
-      encrypt_message += alphabet[shift_number]
-    
-    print(encrypt_message)
-  elif answer == 'decode':
-    message = input("Type your message:\n")
-    number = int(input("Type the shift number:\n"))
-
-    for i in range(len(message)):
-      
-      shift_number = (alphabet.index(message[i]) - number)
-      
-      decrypt_message += alphabet[shift_number]
-    
-    print(decrypt_message)
-  else:
+  if isBreak == 'no':
     break
