@@ -1,6 +1,0 @@
-purple.penup()
-# blue.penup()
-# green.penup()
-# yellow.penup()
-# orange.penup()
-# red.penup()

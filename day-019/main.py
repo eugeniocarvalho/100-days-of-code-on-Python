@@ -1,5 +1,4 @@
 import random
-from sre_constants import OP_IGNORE
 from turtle import Turtle, Screen
 
 screen = Screen()
