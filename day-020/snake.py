@@ -1,5 +1,4 @@
-from http.client import MOVED_PERMANENTLY
-from turtle import Turtle, heading
+from turtle import Turtle
 
 START_POSITIONS = [(0,0), (-20, 0), (-40, 0)]  
 MOVE_DISTANCE = 20
@@ -47,3 +46,11 @@ class Snake:
       self.segments[seg_num].goto(new_x, new_y)
 
     self.head.forward(MOVE_DISTANCE)
+  
+  def increaseSnake(self):
+    segment = Turtle()
+    segment.penup()
+    segment.shape("square")
+    segment.color('white')
+
+    self.segments.append(segment)
