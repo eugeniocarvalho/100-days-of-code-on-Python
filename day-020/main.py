@@ -6,6 +6,7 @@ import time
 
 screen = Screen()
 screen.setup(width=600, height=600)
+
 screen.bgcolor("black")
 screen.title("The SnakeMan")
 screen.tracer(0)
@@ -24,13 +25,13 @@ while game_is_on:
     scoreboard.increaseScore()
 
   if snake.head.xcor() >= 280 or snake.head.xcor() <= -280 or snake.head.ycor() >= 280 or snake.head.ycor() <= -280:
-    scoreboard.game_over()
-    game_is_on = False
+    snake.reset()
+    scoreboard.reset()
   
   for segment in snake.segments[1:]:
     if snake.head.distance(segment) < 15:
-      scoreboard.game_over()
-      game_is_on = False
+      snake.reset()
+      scoreboard.reset()
 
   screen.onkey(snake.up, "w")
   screen.onkey(snake.left, "a")

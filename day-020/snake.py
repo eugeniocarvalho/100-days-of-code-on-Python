@@ -1,3 +1,4 @@
+from asyncio import sleep
 from turtle import Turtle
 
 START_POSITIONS = [(0,0), (-20, 0), (-40, 0)]  
@@ -54,3 +55,11 @@ class Snake:
     segment.color('white')
 
     self.segments.append(segment)
+
+  def reset(self):
+    for seg in self.segments:
+      seg.goto(400, 400)
+      
+    self.segments.clear()
+    self.create_snake()
+    self.head = self.segments[0]
