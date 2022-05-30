@@ -35,9 +35,10 @@ while len(guessed_states) < 50:
 
 states = data.state.tolist()
 
-for state in states:
-  if state not in guessed_states:
-    missing_states.append(state)
+# for state in states:new 
+#   if state not in guessed_states:
+#     missing_states.append(state)
 
+missing_states = [state for state in states if state not in guessed_states]
 new_data = pd.DataFrame(missing_states)
 new_data.to_csv("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-025/states_to_learn.csv")
