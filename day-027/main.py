@@ -1,5 +1,3 @@
-from curses import window
-from importlib.resources import is_resource
 from tkinter import *
 
 def calc_miles():
