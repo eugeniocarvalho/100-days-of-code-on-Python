@@ -2,6 +2,7 @@ from tkinter import *
 import random
 from tkinter import messagebox
 import pyperclip
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -25,18 +26,44 @@ def save_file():
   website = website_entry.get()
   username = username_entry.get()
   password = password_entry.get()
+  new_data = {website: {
+    "email": username,
+    "password": password
+  }}
   
   if len(website) == 0 or len(password) == 0:
     messagebox.showinfo(title="Warning!", message="You forgot some field blank!")
   else:
-    is_ok = messagebox.askokcancel(title=website, message=f"These are the detail entered: \nUsername: {username}\n\nPassword: {password}\n")
+    try:
+      with open("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-029/data.json", "r") as file:
+        data = json.load(file)
+    except FileNotFoundError:
+      with open("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-029/data.json", "w") as file:
+        json.dump(new_data, file, indent=2)
+    else:
+      data.update(new_data)
+    
+      with open("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-029/data.json", "w") as file:
+        json.dump(data, file, indent=2)
+    finally:
+      website_entry.delete(0, END)
+      password_entry.delete(0, END)
 
-    if is_ok:
-      with open("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-029/data.txt", mode="a") as file:
-        my_pass = f"{website} | {username} | {password}"
-        file.write(f"{my_pass}\n")
-        website_entry.delete(0, END)
-        password_entry.delete(0, END)
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+
+def search():
+  try:
+    with open("/home/eugenio/Projetos/Udemy/100-days-of-code-on-Python/day-029/data.json", "r") as file:
+      data = json.load(file)
+  except FileNotFoundError:
+    messagebox.showinfo(title="warning", message="Any password storaged!")
+  else:
+    website = website_entry.get()
+    try:
+      password_entry.delete(0, END)
+      password_entry.insert(END, data[website]["password"])
+    except KeyError:
+      messagebox.showinfo(title="Not Found", message="Account not found!")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -52,9 +79,13 @@ canva.grid(column=1, row=0)
 website_label = Label(text="Website:", bg="white")
 website_label.grid(column=0, row=1)
 
-website_entry = Entry(width=35, justify="left")
-website_entry.grid(column=1, row=1, columnspan=2, sticky="EW")
+website_entry = Entry(width=19, justify="left")
+website_entry.grid(column=1, row=1, sticky="EW")
 website_entry.focus()
+
+search_button = Button(text="Search", command=search, width=13)
+search_button.grid(column=2, row=1)
+
 username_label = Label(text="Email/Username:",bg="white")
 username_label.grid(column=0, row=2)
 
