@@ -1,7 +1,7 @@
 import requests
 from twilio.rest import Client
 
-api_key = "8edb66c7ef72fbdc0780c0a3e125830d"
+api_key = ""
 OWN_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 parameters = {
   "lat": -2.997450,
@@ -10,8 +10,8 @@ parameters = {
   "appid": api_key,
 }
 
-account_sid = "AC5f9076d806979eb0b1c9ccceecc51de2"
-auth_token  = "3a8f92f9c5e53b78f846bd9d985fd23a"
+account_sid = ""
+auth_token  = ""
 
 
 response = requests.get(OWN_endpoint, params=parameters)
@@ -32,8 +32,8 @@ if will_rain:
   message = client.messages \
     .create(
       body="Vai cair toró hoje viu!☔☔",
-      from_="+14698138513",
-      to="+5588996214707"
+      from_="",
+      to=""
   )
 
   print(message.status)

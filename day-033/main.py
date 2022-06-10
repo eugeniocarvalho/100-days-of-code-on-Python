@@ -49,6 +49,6 @@ while True:
 
       connection.sendmail(
         from_addr=MY_EMAIL,
-        to_addrs="eugeniofrcarvalho@gmail.com",
+        to_addrs="",
         msg="Subject:ISS Position\n\nOlha pra riba, desgraça!"
       )
