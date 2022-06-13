@@ -1,10 +1,10 @@
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
-
+import os
 load_dotenv()
 
-TOKEN = "ede3eaoeoksi9octn7eb1mnb4u8as"
+TOKEN = os.getenv('PIXELA_TOKEN')
 USERNAME = "eugeniocarvalho"
 GRAPH_ID = "graph1"
 pixela_endpoint = "https://pixe.la/v1/users"
