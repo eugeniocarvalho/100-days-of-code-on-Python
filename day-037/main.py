@@ -1,5 +1,8 @@
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 TOKEN = "ede3eaoeoksi9octn7eb1mnb4u8as"
 USERNAME = "eugeniocarvalho"
