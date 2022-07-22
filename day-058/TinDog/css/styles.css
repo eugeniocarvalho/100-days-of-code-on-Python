@@ -45,20 +45,29 @@ h3 {
 }
 
 .container-fluid {
-  padding: 3% 15%;
+  padding: 3% 15% 12%;
 }
 
 .btn-download {
   margin: 5% 3% 5% 0;
 }
 
+.iphone-container {
+  position: relative;
+}
+
 .title-image {
   transform: rotate(25deg);
+  position: absolute;
+  right: 30%;
   width: 60%;
 }
 
 #features {
+  background-color: white;
   padding: 5% 15%;
+  position: relative;
+  z-index: 1;
 }
 
 .features-icon {
@@ -109,4 +118,22 @@ h3 {
 #btn-slide {
   position: relative;
   top: -50px;
+}
+
+#pricing {
+  padding: 5% 10%;
+}
+
+@media screen and (max-width: 425px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
 }
